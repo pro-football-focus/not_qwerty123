@@ -165,8 +165,8 @@ defmodule NotQwerty123.WordlistManager do
 
     alternatives =
       words ++
-        Enum.map(words, &String.slice(&1, 1..-1)) ++
-        Enum.map(words, &String.slice(&1, 0..-2)) ++ Enum.map(words, &String.slice(&1, 1..-2))
+        Enum.map(words, &String.slice(&1, 1..-1//1)) ++
+        Enum.map(words, &String.slice(&1, 0..-2//1)) ++ Enum.map(words, &String.slice(&1, 1..-2//1))
 
     reversed = Enum.map(alternatives, &String.reverse(&1))
     Enum.any?(alternatives ++ reversed, &:sets.is_element(&1, wordlist))
